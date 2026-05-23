@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengumuman Kelulusan - SMP SWASTA TEKNOLOGI</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-display { font-family: 'Playfair Display', serif; }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.1); }
+      50% { box-shadow: 0 0 40px rgba(255,255,255,0.3); }
+    }
+    @keyframes confetti-fall {
+      0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100%) rotate(720deg); opacity: 0; }
+    }
+    @keyframes bounce-in {
+      0% { transform: scale(0); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .animate-fade-in-up { animation: fadeInUp 0.8s ease forwards; }
+    .animate-fade-in-up-delay { animation: fadeInUp 0.8s ease 0.2s forwards; opacity: 0; }
+    .animate-fade-in-up-delay2 { animation: fadeInUp 0.8s ease 0.4s forwards; opacity: 0; }
+    .animate-bounce-in { animation: bounce-in 0.6s ease forwards; }
+    .pulse-glow { animation: pulse-glow 2s infinite; }
+    
+    .confetti-piece {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      top: -10px;
+      animation: confetti-fall linear forwards;
+      z-index: 9999;
+      pointer-events: none;
+    }
+    
+    .countdown-box {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full overflow-auto" style="background-color: #a7d4f5;">
+  <div id="app" class="h-full w-full">
+   <!-- LANDING PAGE -->
+   <div id="page-landing" class="min-h-full w-full flex flex-col items-center justify-center px-4 py-8" style="background: linear-gradient(135deg, #1e3a5f 0%, #0d1b2a 50%, #1b3a6b 100%);">
+    <div class="text-center max-w-2xl mx-auto">
+     <div class="animate-fade-in-up mb-6">
+      <img src="https://iili.io/BprJ3qx.png" alt="Logo SMP Swasta Teknologi" class="w-28 h-28 mx-auto rounded-full shadow-2xl pulse-glow object-contain bg-white p-2" loading="lazy" onerror="console.error('Image failed:', this.src); this.style.background='#3b82f6'; this.alt='Logo';">
+     </div>
+     <h1 id="el-school-name" class="font-display text-3xl md:text-5xl text-white font-900 animate-fade-in-up-delay mb-3">SMP SWASTA TEKNOLOGI</h1>
+     <h2 id="el-announcement-title" class="text-xl md:text-2xl text-blue-200 font-semibold animate-fade-in-up-delay2 mb-2">Pengumuman Kelulusan</h2>
+     <p class="text-blue-300 animate-fade-in-up-delay2 mb-2">Tahun Pelajaran 2025/2026</p>
+     <p class="text-yellow-300 animate-fade-in-up-delay2 mb-8 font-semibold text-sm uppercase tracking-wide">📜 Pengumuman Resmi</p><!-- COUNTDOWN -->
+     <div id="countdown-section" class="animate-fade-in-up-delay2 mb-10">
+      <p class="text-blue-200 text-sm mb-3 font-medium uppercase tracking-widest">Waktu Pengumuman</p>
+      <div class="flex justify-center gap-3 md:gap-4">
+       <div class="countdown-box rounded-xl px-4 py-3 min-w-[70px]">
+        <div id="cd-days" class="text-2xl md:text-3xl font-bold text-white">
+         00
+        </div>
+        <div class="text-xs text-blue-300">
+         Hari
+        </div>
+       </div>
+       <div class="countdown-box rounded-xl px-4 py-3 min-w-[70px]">
+        <div id="cd-hours" class="text-2xl md:text-3xl font-bold text-white">
+         00
+        </div>
+        <div class="text-xs text-blue-300">
+         Jam
+        </div>
+       </div>
+       <div class="countdown-box rounded-xl px-4 py-3 min-w-[70px]">
+        <div id="cd-minutes" class="text-2xl md:text-3xl font-bold text-white">
+         00
+        </div>
+        <div class="text-xs text-blue-300">
+         Menit
+        </div>
+       </div>
+       <div class="countdown-box rounded-xl px-4 py-3 min-w-[70px]">
+        <div id="cd-seconds" class="text-2xl md:text-3xl font-bold text-white">
+         00
+        </div>
+        <div class="text-xs text-blue-300">
+         Detik
+        </div>
+       </div>
+      </div>
+     </div><!-- INPUT AREA -->
+     <div id="input-section" class="animate-fade-in-up-delay2 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 md:p-8 max-w-md mx-auto">
+      <h3 class="text-white font-bold text-lg mb-4">Cek Kelulusan Anda</h3>
+      <div class="space-y-4">
+       <div>
+        <label class="text-blue-200 text-sm text-left block mb-1">NISN</label> <input id="input-nisn" type="text" placeholder="Masukkan NISN Anda" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/30 text-white placeholder-blue-300 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30">
+       </div>
+       <div>
+        <label class="text-blue-200 text-sm text-left block mb-1">Tanggal Lahir</label> <input id="input-tgl" type="date" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/30 text-white focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30">
+       </div><button id="btn-check" class="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg"> <span class="flex items-center justify-center gap-2"><i data-lucide="search" style="width:18px;height:18px;"></i> Cek Kelulusan</span> </button>
+      </div>
+      <div id="notification" class="mt-4 hidden"></div>
+     </div>
+    </div><!-- Header putih di bawah -->
+    <div class="w-full mt-auto pt-8">
+     <div class="bg-white/95 backdrop-blur-md border-t-4 border-blue-900 px-6 py-4 text-center">
+      <p class="text-blue-900 font-semibold text-sm">© 2026 SMP SWASTA TEKNOLOGI</p>
+      <p class="text-blue-700 text-xs mt-1">Jika mengalami kendala akses, silakan hubungi wali kelas atau panitia sekolah.</p>
+     </div>
+    </div>
+   </div><!-- RESULT PAGE -->
+   <div id="page-result" class="min-h-full w-full flex flex-col items-center justify-center px-4 py-8 hidden" style="background: linear-gradient(135deg, #1e3a5f 0%, #0d1b2a 50%, #1b3a6b 100%);">
+    <div id="result-content" class="max-w-lg w-full mx-auto text-center"></div><button id="btn-back" class="mt-8 px-6 py-3 bg-white/10 border border-white/30 text-white rounded-lg hover:bg-white/20 transition-all font-medium"> <span class="flex items-center gap-2"><i data-lucide="arrow-left" style="width:18px;height:18px;"></i> Kembali</span> </button>
+    <footer class="mt-12 text-center text-blue-400 text-sm">
+     <p>© 2026 SMP SWASTA TEKNOLOGI</p>
+     <p class="mt-1 text-blue-500">Jika mengalami kendala akses, silakan hubungi wali kelas atau panitia sekolah.</p>
+    </footer>
+   </div>
+  </div>
+  <script>
+    // Config & SDK
+    const defaultConfig = {
+      school_name: 'SMP SWASTA TEKNOLOGI',
+      announcement_title: 'Pengumuman Kelulusan',
+      background_color: '#1e3a5f',
+      surface_color: '#ffffff',
+      text_color: '#ffffff',
+      primary_action: '#3b82f6',
+      secondary_action: '#93c5fd'
+    };
+
+    window.elementSdk.init({
+      defaultConfig,
+      onConfigChange: async (config) => {
+        document.getElementById('el-school-name').textContent = config.school_name || defaultConfig.school_name;
+        document.getElementById('el-announcement-title').textContent = config.announcement_title || defaultConfig.announcement_title;
+      },
+      mapToCapabilities: (config) => ({
+        recolorables: [
+          { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); }},
+          { get: () => config.primary_action || defaultConfig.primary_action, set: (v) => { config.primary_action = v; window.elementSdk.setConfig({ primary_action: v }); }},
+          { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); }}
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      }),
+      mapToEditPanelValues: (config) => new Map([
+        ['school_name', config.school_name || defaultConfig.school_name],
+        ['announcement_title', config.announcement_title || defaultConfig.announcement_title]
+      ])
+    });
+
+    // CSV Data
+    let students = [];
+    const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSXQdPIBXeGrzrVyc2WsLH5rSzWaTZd7jrhiCPLE_yMHAfqEzyQgz0jYC_RKu62HQ/pub?gid=1789323003&single=true&output=csv';
+
+    async function loadCSV() {
+      try {
+        const res = await fetch(CSV_URL);
+        const text = await res.text();
+        const rows = text.split('\n').map(r => {
+          // Simple CSV parse
+          const cols = [];
+          let current = '';
+          let inQuotes = false;
+          for (let i = 0; i < r.length; i++) {
+            if (r[i] === '"') { inQuotes = !inQuotes; }
+            else if (r[i] === ',' && !inQuotes) { cols.push(current.trim()); current = ''; }
+            else { current += r[i]; }
+          }
+          cols.push(current.trim());
+          return cols;
+        });
+        // Skip header row
+        for (let i = 1; i < rows.length; i++) {
+          const r = rows[i];
+          if (r.length >= 7 && r[0]) {
+            students.push({
+              nama: r[0],       // A
+              nis: r[1],        // B
+              jk: r[2],         // C
+              nisn: r[3],       // D
+              tgl_lahir: r[4],  // E
+              ortu: r[5],       // F
+              status: r[6]      // G
+            });
+          }
+        }
+      } catch(e) {
+        console.error('Failed to load CSV:', e);
+      }
+    }
+    loadCSV();
+
+    // Countdown - set target date to 2 June 2026 at 11:00 WIB
+    const targetDate = new Date('2026-06-02T11:00:00+07:00');
+    const inputSection = document.getElementById('input-section');
+    
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+      
+      if (diff <= 0) {
+        // Waktu pengumuman telah tiba
+        document.getElementById('cd-days').textContent = '00';
+        document.getElementById('cd-hours').textContent = '00';
+        document.getElementById('cd-minutes').textContent = '00';
+        document.getElementById('cd-seconds').textContent = '00';
+        
+        // Buka akses menu cek kelulusan
+        inputSection.classList.remove('opacity-50', 'pointer-events-none');
+        document.getElementById('btn-check').disabled = false;
+        document.getElementById('input-nisn').disabled = false;
+        document.getElementById('input-tgl').disabled = false;
+      } else {
+        // Kunci akses menu cek kelulusan
+        inputSection.classList.add('opacity-50', 'pointer-events-none');
+        document.getElementById('btn-check').disabled = true;
+        document.getElementById('input-nisn').disabled = true;
+        document.getElementById('input-tgl').disabled = true;
+        
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+        document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+        document.getElementById('cd-minutes').textContent = String(m).padStart(2,'0');
+        document.getElementById('cd-seconds').textContent = String(s).padStart(2,'0');
+      }
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Check graduation
+    document.getElementById('btn-check').addEventListener('click', () => {
+      const nisn = document.getElementById('input-nisn').value.trim();
+      const tgl = document.getElementById('input-tgl').value.trim();
+      const notif = document.getElementById('notification');
+
+      if (!nisn || !tgl) {
+        notif.className = 'mt-4 p-3 rounded-lg bg-yellow-500/20 border border-yellow-400/50 text-yellow-200 text-sm';
+        notif.innerHTML = '⚠️ Harap masukkan NISN dan Tanggal Lahir Anda.';
+        notif.classList.remove('hidden');
+        return;
+      }
+
+      // Find student
+      const found = students.find(s => {
+        const nisnMatch = s.nisn === nisn;
+        // Flexible date matching
+        const inputDate = new Date(tgl);
+        const studentDateStr = s.tgl_lahir;
+        let dateMatch = false;
+        // Try direct string match
+        if (studentDateStr === tgl) dateMatch = true;
+        // Try parsing student date
+        try {
+          const parts = studentDateStr.split(/[-/]/);
+          if (parts.length === 3) {
+            // Could be DD/MM/YYYY or YYYY-MM-DD
+            let sd;
+            if (parts[0].length === 4) sd = new Date(parts[0], parts[1]-1, parts[2]);
+            else sd = new Date(parts[2], parts[1]-1, parts[0]);
+            if (sd.toISOString().split('T')[0] === tgl) dateMatch = true;
+          }
+        } catch(e) {}
+        // Also simple includes check
+        if (studentDateStr && studentDateStr.includes(tgl)) dateMatch = true;
+        if (tgl && inputDate) {
+          const formatted = `${inputDate.getDate()}/${inputDate.getMonth()+1}/${inputDate.getFullYear()}`;
+          const formatted2 = `${String(inputDate.getDate()).padStart(2,'0')}/${String(inputDate.getMonth()+1).padStart(2,'0')}/${inputDate.getFullYear()}`;
+          if (studentDateStr === formatted || studentDateStr === formatted2) dateMatch = true;
+        }
+        return nisnMatch && dateMatch;
+      });
+
+      // Show result page
+      document.getElementById('page-landing').classList.add('hidden');
+      document.getElementById('page-result').classList.remove('hidden');
+      const resultDiv = document.getElementById('result-content');
+
+      if (!found) {
+        resultDiv.innerHTML = `
+          <div class="animate-bounce-in bg-red-500/20 border border-red-400/30 backdrop-blur-md rounded-2xl p-8">
+            <div class="text-6xl mb-4">🚫</div>
+            <h2 class="text-2xl font-bold text-white mb-3">NISN Tidak Ditemukan</h2>
+            <p class="text-red-200">Silakan periksa kembali NISN dan Tanggal Lahir Anda, atau hubungi wali kelas.</p>
+          </div>`;
+        return;
+      }
+
+      if (found.status && found.status.toUpperCase().includes('LULUS')) {
+        launchConfetti();
+        resultDiv.innerHTML = `
+          <div class="animate-bounce-in bg-green-500/20 border border-green-400/30 backdrop-blur-md rounded-2xl p-8">
+            <div class="text-6xl mb-4">🎉</div>
+            <h2 class="font-display text-3xl font-bold text-white mb-2">SELAMAT!</h2>
+            <p class="text-green-200 text-lg mb-6">Anda dinyatakan <span class="font-bold text-green-300 text-xl">LULUS</span></p>
+            <div class="text-left bg-white/10 rounded-xl p-5 space-y-2 text-sm">
+              <div class="flex justify-between text-blue-100"><span class="font-semibold">NISN:</span><span>${found.nisn}</span></div>
+              <div class="flex justify-between text-blue-100"><span class="font-semibold">Nama Siswa:</span><span>${found.nama}</span></div>
+              <div class="flex justify-between text-blue-100"><span class="font-semibold">NIS:</span><span>${found.nis}</span></div>
+              <div class="flex justify-between text-blue-100"><span class="font-semibold">Tanggal Lahir:</span><span>${found.tgl_lahir}</span></div>
+              <div class="flex justify-between text-blue-100"><span class="font-semibold">Jenis Kelamin:</span><span>${found.jk}</span></div>
+              <div class="flex justify-between text-blue-100"><span class="font-semibold">Nama Orang Tua:</span><span>${found.ortu}</span></div>
+              <div class="flex justify-between text-blue-100"><span class="font-semibold">Status:</span><span class="text-green-300 font-bold">LULUS ✅</span></div>
+            </div>
+            <div class="mt-6 p-4 bg-white/5 rounded-lg border border-white/10">
+              <p class="text-blue-200 text-sm italic">"Lulus SMP bukanlah akhir, tapi gerbang menuju petualangan yang lebih seru. Ilmu yang kau bawa dari SMP akan jadi bekal penting untuk masa depanmu. Jangan berhenti di sini, kamu punya potensi besar untuk terus berkembang."</p>
+            </div>
+          </div>`;
+      } else {
+        resultDiv.innerHTML = `
+          <div class="animate-bounce-in bg-orange-500/20 border border-orange-400/30 backdrop-blur-md rounded-2xl p-8">
+            <div class="text-6xl mb-4">📋</div>
+            <h2 class="text-2xl font-bold text-white mb-3">Hasil Kelulusan</h2>
+            <div class="text-left bg-white/10 rounded-xl p-5 space-y-2 text-sm">
+              <div class="flex justify-between text-blue-100"><span class="font-semibold">NISN:</span><span>${found.nisn}</span></div>
+              <div class="flex justify-between text-blue-100"><span class="font-semibold">Nama Siswa:</span><span>${found.nama}</span></div>
+              <div class="flex justify-between text-blue-100"><span class="font-semibold">Status:</span><span class="text-orange-300 font-bold">${found.status}</span></div>
+            </div>
+          </div>`;
+      }
+    });
+
+    // Back button
+    document.getElementById('btn-back').addEventListener('click', () => {
+      document.getElementById('page-result').classList.add('hidden');
+      document.getElementById('page-landing').classList.remove('hidden');
+      document.getElementById('notification').classList.add('hidden');
+    });
+
+    // Confetti
+    function launchConfetti() {
+      const colors = ['#ff0', '#f0f', '#0ff', '#f00', '#0f0', '#ff6600', '#fff'];
+      for (let i = 0; i < 80; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'confetti-piece';
+        piece.style.left = Math.random() * 100 + '%';
+        piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.width = (Math.random() * 8 + 5) + 'px';
+        piece.style.height = (Math.random() * 8 + 5) + 'px';
+        piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+        piece.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        piece.style.animationDelay = (Math.random() * 1.5) + 's';
+        document.body.appendChild(piece);
+        setTimeout(() => piece.remove(), 5000);
+      }
+    }
+
+    lucide.createIcons();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a003e47b18d5cddd',t:'MTc3OTUzNzU0NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
